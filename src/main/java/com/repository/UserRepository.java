@@ -8,5 +8,4 @@ import com.entity.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Integer>{
 	List<UserEntity> findAll();
-
 }

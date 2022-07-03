@@ -1,11 +1,13 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,9 +33,27 @@ public class UserController {
 	}
 
 	@DeleteMapping 
-	public void deleteUser(Integer userid) {
-		userRepo.deleteById(userid);
-				
+	public boolean deleteUser(Integer userid) {
+		Optional<UserEntity> user=userRepo.findById(userid);
+		if(user.isPresent()) {			
+			userRepo.deleteById(userid);
+			return true;
+		}else {
+			System.out.println("problem");
+			return false;
+		}		
+	}
+	
+	@PutMapping
+	public boolean updateUser(UserEntity user) {
+		Optional<UserEntity> user1=userRepo.findById(user.getUserId());
+		if(user1.isPresent()) {			
+			userRepo.save(user);
+			return true;
+		}else {
+			System.out.println("problem with id");
+			return false;
+		}
 	}
 	
 }
