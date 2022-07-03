@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entity.UserEntity;
@@ -55,5 +56,14 @@ public class UserController {
 			return false;
 		}
 	}
+	
+	//user which contain active as true or false
+	@GetMapping("/status")
+	public List<UserEntity> getAllUserByStatusActivation(@RequestParam("active") Boolean active){
+		List<UserEntity> users=userRepo.getAllByStatusActivation(active);
+		return users;
+	}
+	
+	
 	
 }
