@@ -30,6 +30,8 @@ public class UserController {
 	@GetMapping
 	public List<UserEntity> getAllUser() {
 		List<UserEntity> users = userRepo.findAll();
+//		you can iterate over here
+//		users.forEach(user->System.out.println(user));//or use iterator in simple loop 
 		return users;
 	}
 
@@ -48,6 +50,9 @@ public class UserController {
 	@PutMapping
 	public boolean updateUser(UserEntity user) {
 		Optional<UserEntity> user1=userRepo.findById(user.getUserId());
+//		UserEntity u = user1.get();//return that particular userEntity
+//		when the requirement to change user using getter setter
+		
 		if(user1.isPresent()) {			
 			userRepo.save(user);
 			return true;
@@ -64,6 +69,10 @@ public class UserController {
 		return users;
 	}
 	
+	@GetMapping("/find")
+	public List<UserEntity> getSpecificRecord(@RequestParam("firstName") String firstName){
+		return userRepo.findByfirstName(firstName);
+	}
 	
 	
 }
