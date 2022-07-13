@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.entity.AddressEntity;
+import com.entity.CustomerEntity;
 
 @Repository
-public interface AddressRepository extends CrudRepository<AddressEntity, Integer>{
-	List<AddressEntity> findAll();
+public interface CustomerRepository extends CrudRepository<CustomerEntity, Integer> {
+	List<CustomerEntity> findAll();
 }
