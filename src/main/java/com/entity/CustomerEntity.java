@@ -19,7 +19,7 @@ public class CustomerEntity {
 	String name;
 
 	@OneToMany
-	@JoinColumn(name = "orderId")
+	@JoinColumn(name = "customerId")
 	Set<OrderEntity> orders;
 	public Integer getCustomerId() {
 		return customerId;

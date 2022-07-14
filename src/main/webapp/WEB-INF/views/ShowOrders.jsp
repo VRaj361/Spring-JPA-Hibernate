@@ -6,23 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Show All Customer</title>
+<title>Show Orders</title>
 </head>
 <body>
-	<h1>Show All Customers</h1>
+	<h2>Name : ${customer.get(0).getName() }</h2>
+	<h2>Customer Id : ${customer.get(0).getCustomerId() }</h2>
 	<table border=1>
 		<tr>
-			<td>Name</td>
-			<td>Orders Size</td>
-			<td>Action</td>
+			<td>OrderId</td>
+			<td>Total Amount</td>
 		</tr>
-		<c:forEach items="${customers}" var="cus">
+		
+		<c:forEach items="${customer.get(0).getOrders()}" var="c">
 			<tr>
-				<td>${cus.name}</td>
-				<td>${cus.getOrders().size()}</td> 
-				<td><a href="showorders/${cus.customerId}">Show Orders</a></td> 
+				<td>${c.orderId }</td>
+				<td>${c.totalAmount }</td>
 			</tr>
 		</c:forEach>
+		
 	</table>
 </body>
 </html>

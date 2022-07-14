@@ -18,7 +18,7 @@
 				<option value="${c.customerId}">${c.name}</option>
 			</c:forEach>
 		</select> Total Amount : <input type="text" name="totalAmount"><Br>
-		<Br> <input type="submit" value="Save Order" />
+		<br> <input type="submit" value="Save Order" />
 	</form>
 	
 </body>
