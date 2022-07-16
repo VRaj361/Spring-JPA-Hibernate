@@ -10,4 +10,5 @@ import com.entity.CustomerEntity;
 @Repository
 public interface CustomerRepository extends CrudRepository<CustomerEntity, Integer> {
 	List<CustomerEntity> findAll();
+	List<CustomerEntity> findByCustomerId(int customerId);
 }

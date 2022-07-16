@@ -42,10 +42,14 @@ public class CustomerController {
 	@GetMapping("/showorders/{customerId}")
 	public String showOrders(@PathVariable Integer customerId,Model model) {
 		System.out.println("customerId---->"+customerId);
-		Optional<CustomerEntity> customer1 = customerRepo.findById(customerId);
-		List<CustomerEntity> customer=customer1.stream().toList();
-		System.out.println(customer.get(0).getOrders());
-		model.addAttribute("customer",customer);
+		
+		//Optional<CustomerEntity> customer2 = customerRepo.findById(customerId);
+		//List<CustomerEntity> customer1=customer2.stream().toList();
+		
+		List<CustomerEntity> customer1=customerRepo.findByCustomerId(customerId);
+		System.out.println(customer1.get(0).getOrders());
+		System.out.println(customer1.get(0).getCustomerId());
+		model.addAttribute("customer",customer1);
 		return "ShowOrders";
 	}
 }
