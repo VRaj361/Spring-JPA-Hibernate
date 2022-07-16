@@ -18,8 +18,9 @@ public class CustomerEntity {
 
 	String name;
 
-	@OneToMany
-	@JoinColumn(name = "customerId")
+	@OneToMany(mappedBy = "customer")
+	//@JoinColumn(name = "customerId")
+	
 	Set<OrderEntity> orders;
 	public Integer getCustomerId() {
 		return customerId;
